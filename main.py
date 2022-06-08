@@ -86,5 +86,6 @@ if uploaded_file:
         x_train, x_test, y_train, y_test = train_test_split(x, y, random_state=42)
         reg.fit(x_train, y_train)
         pred = reg.predict(new_geek)
+        pred = np.ceil(pred)
         res = pd.concat([names, cat, decl, pd.DataFrame(pred, columns=['Predicted'])], axis=1)
         st.write(res)
